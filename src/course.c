@@ -218,13 +218,16 @@ void viewAllCoursesForFaculty(int client_socket, int faculty_id) {
     close(fd);
 }
 
-int updateCourse(int client_socket) {
+int updateCourse(int client_socket,int faculty_id) {
     char *str;
     struct course st;
     int fd;
     openCourseFile(&fd, O_RDWR);
     int id = getIdFromClient(client_socket, "Enter course id- ");
     if(findCourseById(fd, &st, id)) {
+        if(st.faculty_id != faculty_id) {
+            str = "==========Course not offered by you==========\n";
+        }else{
         int total_seats = st.total_seats;
         int enrolled_seats = st.total_seats - st.available_seats;
         getCourseDetails(client_socket, &st);
@@ -236,24 +239,28 @@ int updateCourse(int client_socket) {
         }
         writeCourse(fd, &st, UPDATE);
         str = "============Course updated============\n";
-    } else {
+    }} else {
         str = "============Course not found============\n";
     }
     send(client_socket, str, strlen(str), MSG_MORE);
     close(fd);
 }
 
-void removeCourse(int client_socket) {
+void removeCourse(int client_socket,int faculty_id){
     char *str;
     struct course st;
     int fd;
     openCourseFile(&fd, O_RDWR);
     int id = getCourseIdFromClient(client_socket);
     if(findCourseById(fd, &st, id)) {
-        st.status = INACTIVE;
-        removeLastNStudent(id, st.total_seats - st.available_seats);
-        writeCourse(fd, &st, UPDATE);
-        str = "============Course remmoved============\n";
+        if(st.faculty_id != faculty_id) {
+            str = "==========Course not offered by you==========\n";
+        } else {
+            st.status = INACTIVE;
+            removeLastNStudent(id, st.total_seats - st.available_seats);
+            writeCourse(fd, &st, UPDATE);
+            str = "==========Course remmoved==========\n";
+        }
     } else {
         str = "============Course not found============\n";
     }

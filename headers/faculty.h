@@ -13,8 +13,8 @@ struct faculty {
 
 void viewAllCoursesForFaculty(int, int);
 int addCourse(int, int);
-void removeCourse(int);
-int updateCourse(int);
+void removeCourse(int,int);
+int updateCourse(int,int);
 
 int addFaculty(int client_socket);
 void viewFaculty(int client_socket);
