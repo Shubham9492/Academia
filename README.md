@@ -1,7 +1,7 @@
 # Academia
 
-Title: Design and Development of Course Registration Portal (Academia).<br />
-Description: The project aims to develop a Academia Portal that is user-friendly and
+**##Title**: Design and Development of Course Registration Portal (Academia).<br />
+**##Description**: The project aims to develop a Academia Portal that is user-friendly and
 multifunctional.<br />
 The project should have the following functionalities:<br />
 ● All Student and Faculty details and Course information are stored in files.<br />
@@ -11,7 +11,7 @@ all these User accounts will be managed by the Administrator.<br />
 ● The application should possess password-protected administrative access, thus
 preventing the whole management system from unauthorized access.<br />
 ● Once the Admin connects to the server, He/She should get a login and
-password prompt.<br />
+password prompt.<br/>
 After successful login, He/She should get menu for example:<br />
 Do you want to:
 - Add Student
@@ -19,11 +19,10 @@ Do you want to:
 - Activate/Deactivate Student
 - Update Student/Faculty details
 - Exit<br />
-<br />
 ● Once the Student connects to the server, He/She should get a login and
 password prompt.
 After successful login, He/She should get menu for example:<br />
-Do you want to:
+Do you want to: 
 - Enroll to new Courses
 - Unenroll from already enrolled Courses
 - View enrolled Courses
